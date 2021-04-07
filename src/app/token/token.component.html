@@ -1,0 +1,15 @@
+<div>
+
+    <div id="testo">
+      <br />
+      <br />
+      <br />
+      <label for="token">Enter token:</label><br />
+      <input id="token" [(ngModel)]="token" text="Enter token:"><br />
+      <button (click)="save()">Save</button>
+      <br />
+      <br />
+      <h5 *ngIf="showTokenSaved">Token Saved!</h5>
+    </div>
+</div>
+  
