@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { MessageService } from '../message.service';
 
 @Component({
@@ -12,12 +13,11 @@ export class TokenComponent implements OnInit {
   showTokenSaved: boolean = false;
 
 
-  constructor(
-    private messageService: MessageService) { }
+  constructor(private messageService: MessageService) { }
 
   save() {
-    this.showTokenSaved = true;
     this.log("saving token");
+    this.showTokenSaved = true;
   }
 
   private log(message: string) {

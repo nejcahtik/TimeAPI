@@ -7,6 +7,7 @@ import { TokenComponent } from './token/token.component';
 import { MessagesComponent } from './messages/messages.component';
 import { UsersComponent } from './users/users.component';
 import { PresenceComponent } from './presence/presence.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { PresenceComponent } from './presence/presence.component';
     MessagesComponent,
     UsersComponent,
     PresenceComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

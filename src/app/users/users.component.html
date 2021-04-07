@@ -1,1 +1,31 @@
-<p>users works!</p>
+<div>
+    <h2>All Employees</h2>
+  
+    <div>
+      <p *ngIf="tokenVisible">Token not set!</p>
+    </div>
+    <div>
+      <div>
+  
+        <input id="userFirstName" [(ngModel)]="userFirstName" placeholder="First Name">
+  
+        <input id="userLastName" [(ngModel)]="userLastName" placeholder="Last Name">
+  
+        <input  id="userEmail" [(ngModel)]="userEmail" placeholder="Email">
+      </div>
+  
+      <button (click)="addNewUser(userFirstName, userLastName, userEmail)">Add User</button>
+  
+    </div>
+
+  
+  
+    <input type="name" id="search-text" aria-describedby="search-text"
+           [(ngModel)]="searchText" placeholder="Search for Employee"
+           autofocus>
+    <br />
+    <br />
+      <div>
+      </div>
+  </div>
+  
