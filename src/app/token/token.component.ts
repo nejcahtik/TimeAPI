@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Inject, Injectable } from '@angular/core';
 import { MessageService } from '../message.service';
+import { TOKEN_SESSION } from '../tokenstorage';
 
 @Component({
   selector: 'app-token',
@@ -13,7 +14,8 @@ export class TokenComponent implements OnInit {
   showTokenSaved: boolean = false;
 
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService,
+    @Inject(TOKEN_SESSION) private localStorage: Storage,) { }
 
   save() {
     this.log("saving token");

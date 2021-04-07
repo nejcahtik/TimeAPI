@@ -6,17 +6,30 @@
     <div>
       <p>Token not set!</p>
       <br />
-      <button (click)="refresh()">Refresh</button>
+      <button>Refresh</button>
     </div>
     <br />
   
-    <input type="name" class="form-control" id="search-text" aria-describedby="search-text"
+    <input type="name"id="search-text" aria-describedby="search-text"
            [(ngModel)]="searchText" placeholder="Search for Employee"
            autofocus>
     <br />
     <br />
       <div >
-        
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+          </tr>
+          <tr *ngFor="let presentUser of presentUsers | appFilter: searchText">
+            <td>{{presentUser.Id}}</td>
+            <td>{{presentUser.FirstName}}</td>
+            <td>{{presentUser.LastName}}</td>
+            <td>{{presentUser.Email}}</td>
+          </tr>
+        </table>
       </div>
   </div>
   

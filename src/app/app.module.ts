@@ -8,6 +8,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { UsersComponent } from './users/users.component';
 import { PresenceComponent } from './presence/presence.component';
 import { FilterPipe } from './filter.pipe';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { FilterPipe } from './filter.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

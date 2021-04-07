@@ -1,9 +1,12 @@
 <div>
     <h2>All Employees</h2>
-  
+    <br />
+    <br />
     <div>
-      <p *ngIf="tokenVisible">Token not set!</p>
+      <p>Token not set!</p>
     </div>
+    <button>Add New Employee</button>
+
     <div>
       <div>
   
@@ -13,12 +16,12 @@
   
         <input  id="userEmail" [(ngModel)]="userEmail" placeholder="Email">
       </div>
-  
+      <br />
       <button (click)="addNewUser(userFirstName, userLastName, userEmail)">Add User</button>
-  
+    
     </div>
 
-  
+    <br />
   
     <input type="name" id="search-text" aria-describedby="search-text"
            [(ngModel)]="searchText" placeholder="Search for Employee"
@@ -26,6 +29,20 @@
     <br />
     <br />
       <div>
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+          </tr>
+          <tr *ngFor="let user of users | appFilter: searchText">
+            <td>{{user.Id}}</td>
+            <td>{{user.FirstName}}</td>
+            <td>{{user.LastName}}</td>
+            <td>{{user.Email}}</td>
+          </tr>
+        </table>
       </div>
   </div>
   
