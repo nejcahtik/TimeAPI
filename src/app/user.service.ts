@@ -13,14 +13,12 @@ export class UserService {
 
   properties: any;
 
-  private usersUrl = ' http://rdweb.spica.com:5213/timeapi';
+  private usersUrl = 'http://localhost:3000/proxy/timeapi';
 
   constructor(private messageService: MessageService,
     private http: HttpClient) {
   
   }
-
-  
 
   getUsers(token: string): Observable<Data>{
 
@@ -44,6 +42,8 @@ export class UserService {
         'Authorization': token,
       })
     }
+
+    this.log("user: " + user.FirstName);
 
     return this.http.put<Data>(this.usersUrl + "/Employee", user, this.properties)
       .pipe(
