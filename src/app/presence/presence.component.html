@@ -1,35 +1,35 @@
-<div>
-    <h2>Currently Present Employees</h2>
-  
+<div class="container justify-content-center">
+  <h2 class="d-flex justify-content-center">Currently Present Employees</h2>
+
+  <br />
+
+  <div class="text-center">
+    <p *ngIf="tokenVisible">Token not set!</p>
     <br />
-  
-    <div>
-      <p>Token not set!</p>
-      <br />
-      <button>Refresh</button>
-    </div>
-    <br />
-  
-    <input type="name"id="search-text" aria-describedby="search-text"
-           [(ngModel)]="searchText" placeholder="Search for Employee"
-           autofocus>
-    <br />
-    <br />
-      <div >
-        <table>
-          <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-          </tr>
-          <tr *ngFor="let presentUser of presentUsers | appFilter: searchText">
-            <td>{{presentUser.Id}}</td>
-            <td>{{presentUser.FirstName}}</td>
-            <td>{{presentUser.LastName}}</td>
-            <td>{{presentUser.Email}}</td>
-          </tr>
-        </table>
-      </div>
+    <button (click)="refresh()" class="btn btn-info">Refresh</button>
   </div>
-  
+  <br />
+
+  <input type="name" class="form-control" id="search-text" aria-describedby="search-text"
+         [(ngModel)]="searchText" placeholder="Search for Employee"
+         autofocus>
+  <br />
+  <p class="d-flex justify-content-center" *ngIf="showDidntGetAnyUsers"><b>Can't seem to find any employees. Check if the Token is correct.</b></p>
+  <br />
+    <div class="table-responsive text-center">
+      <table class="table">
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+        </tr>
+        <tr *ngFor="let presentUser of presentUsers | appFilter: searchText">
+          <td>{{presentUser.Id}}</td>
+          <td>{{presentUser.FirstName}}</td>
+          <td>{{presentUser.LastName}}</td>
+          <td>{{presentUser.Email}}</td>
+        </tr>
+      </table>
+    </div>
+</div>

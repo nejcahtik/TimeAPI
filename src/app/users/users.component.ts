@@ -19,26 +19,56 @@ export class UsersComponent implements OnInit {
 
   public searchText = "";
   users: User[] = [];
+  selectedUser?: User;
 
 
   userFirstName: string = "";
   userLastName: string = "";
   userEmail: string = "";
+  tokenVisible: boolean = true;
+  clickedOnAdd: boolean = false;
+  showUserAdded: boolean = false;
+  showDidntGetAnyUsers: boolean = false;
+  notValidEmployee: boolean = false;
 
   token: string | null = "";
 
   addNewUser(FirstName: string, LastName: string, Email: string): void {
+    this.clickedOnAdd = false;
 
     this.token = this.localStorage.getItem("spica_token");
 
     if (!(this.token === null)) {
 
-      this.userService.setUser({ FirstName, LastName, Email } as User, this.token)
-        .subscribe(user => {
-          console.log(user);
-          this.users.push(user.data);
-        });
+      this.tokenVisible = false;
+
+      if(!(FirstName === "") && !(LastName === "")) {
+
+        this.notValidEmployee = false;
+
+        this.userService.setUser({ FirstName, LastName, Email } as User, this.token)
+          .subscribe(user => {
+            console.log(user);
+            this.showUserAdded = true;
+            this.users.push(user.data);
+          });
+      }
+      else {
+        this.notValidEmployee = true;
+      }
     }
+    else {
+      this.tokenVisible = true;
+    }
+  }
+
+  clickToAdd(): void {
+    this.clickedOnAdd = true;
+    this.notValidEmployee = false;
+  }
+
+  onSelect(user: User): void {
+    this.selectedUser = user;
   }
 
   getUsers(): void {
@@ -47,15 +77,20 @@ export class UsersComponent implements OnInit {
 
     if (!(this.token === null)) {
 
+      this.tokenVisible = false;
 
       this.userService.getUsers(this.token)
         .subscribe(users => {
           console.log(users);
           this.users = users.data;
           if (this.users == null) {
+            this.showDidntGetAnyUsers = true;
           }
 
         });
+    }
+    else {
+      this.tokenVisible = true;
     }
   }
 

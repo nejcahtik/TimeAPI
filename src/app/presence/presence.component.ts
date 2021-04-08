@@ -17,8 +17,10 @@ export class PresenceComponent implements OnInit {
     private messageService: MessageService) { }
 
   presentUsers: User[] = [];
+  tokenVisible: boolean = true;
   token: string | null = "";
   public searchText = "";
+  showDidntGetAnyUsers: boolean = false;
 
   refresh(): void {
     this.getPresentUsers();
@@ -30,12 +32,20 @@ export class PresenceComponent implements OnInit {
 
     if (!(this.token === null)) {
 
+      this.tokenVisible = false;
+
       this.userService.getPresentUsers(this.token)
         .subscribe(presentUsers => {
           console.log(presentUsers.length);
           this.presentUsers = presentUsers.data;
-          
+          if (this.presentUsers == null) {
+            this.showDidntGetAnyUsers = true;
+          }
+
         });
+    }
+    else {
+      this.tokenVisible = true;
     }
   }
 

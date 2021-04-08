@@ -1,48 +1,52 @@
-<div>
-    <h2>All Employees</h2>
-    <br />
-    <br />
-    <div>
-      <p>Token not set!</p>
-    </div>
-    <button>Add New Employee</button>
+<div class="container justify-content-center">
+  <h2 class="d-flex justify-content-center">All Employees</h2>
+  <br />
+  <br />
 
-    <div>
-      <div>
-  
-        <input id="userFirstName" [(ngModel)]="userFirstName" placeholder="First Name">
-  
-        <input id="userLastName" [(ngModel)]="userLastName" placeholder="Last Name">
-  
-        <input  id="userEmail" [(ngModel)]="userEmail" placeholder="Email">
-      </div>
-      <br />
-      <button (click)="addNewUser(userFirstName, userLastName, userEmail)">Add User</button>
-    
-    </div>
-
-    <br />
-  
-    <input type="name" id="search-text" aria-describedby="search-text"
-           [(ngModel)]="searchText" placeholder="Search for Employee"
-           autofocus>
-    <br />
-    <br />
-      <div>
-        <table>
-          <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-          </tr>
-          <tr *ngFor="let user of users | appFilter: searchText">
-            <td>{{user.Id}}</td>
-            <td>{{user.FirstName}}</td>
-            <td>{{user.LastName}}</td>
-            <td>{{user.Email}}</td>
-          </tr>
-        </table>
-      </div>
+  <div class="text-center">
+    <p *ngIf="tokenVisible">Token not set!</p>
+    <p *ngIf="showUserAdded">Employee Added</p>
+    <p *ngIf="notValidEmployee">Error: Not a Valid Employee. A Valid Employee should have both first name and last name.</p>
+    <button class="btn btn-warning" *ngIf="!clickedOnAdd" (click)="clickToAdd()">Add New Employee</button>
   </div>
-  
+  <div *ngIf="clickedOnAdd" class="text-center">
+    <div class="form-check-inline justify-content-center">
+
+      <input class="m-2" id="userFirstName" [(ngModel)]="userFirstName" placeholder="First Name">
+
+      <input class="m-2" id="userLastName" [(ngModel)]="userLastName" placeholder="Last Name">
+
+      <input class="m-2" id="userEmail" [(ngModel)]="userEmail" placeholder="Email">
+    </div>
+    <br />
+
+    <button (click)="addNewUser(userFirstName, userLastName, userEmail)" class="btn btn-danger">Add New Employee</button>
+
+  </div>
+
+  <br />
+
+
+  <input type="name" class="form-control" id="search-text" aria-describedby="search-text"
+         [(ngModel)]="searchText" placeholder="Search for Employee"
+         autofocus>
+  <br />
+  <p class="d-flex justify-content-center" *ngIf="showDidntGetAnyUsers"><b>Can't seem to find any employees. Check if the Token is correct.</b></p>
+  <br />
+    <div class="table-responsive text-center">
+      <table class="table">
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+        </tr>
+        <tr *ngFor="let user of users | appFilter: searchText">
+          <td>{{user.Id}}</td>
+          <td>{{user.FirstName}}</td>
+          <td>{{user.LastName}}</td>
+          <td>{{user.Email}}</td>
+        </tr>
+      </table>
+    </div>   
+</div>

@@ -1,18 +1,19 @@
-<h1>{{title}}</h1>
+<h1 class="text-center">{{title}}</h1>
 
 <br />
-<ul>
+<ul class="nav mr-auto justify-content-around navbar-dark bg-dark navbar-fixed-top">
     <li>
-      <a routerLink="/token">Settings</a>
+      <a class="navbar-brand btn btn-dark"   routerLink="/token">Settings</a>
     </li>
     <li>
-      <a routerLink="/users">All Employees</a>
+      <a class="navbar-brand btn btn-dark" routerLink="/users">All Employees</a>
     </li>
     <li>
-      <a routerLink="/presence">Presence</a>
+      <a class="navbar-brand btn btn-dark" routerLink="/presence">Presence</a>
     </li>
 </ul>
 <br />
 <br />
-<router-outlet></router-outlet>
 <app-messages></app-messages>
+<router-outlet></router-outlet>
+
