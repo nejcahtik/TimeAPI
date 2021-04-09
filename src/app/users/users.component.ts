@@ -50,7 +50,7 @@ export class UsersComponent implements OnInit {
           .subscribe(user => {
             console.log(user);
             this.showUserAdded = true;
-            this.users.push(user.data);
+            this.users.push(user.data);//<----------------------- Change "this.users.push(user.data)" to "this.users.push(user)" if CORS policy error is resolved
           });
       }
       else {
@@ -82,7 +82,7 @@ export class UsersComponent implements OnInit {
       this.userService.getUsers(this.token)
         .subscribe(users => {
           console.log(users);
-          this.users = users.data;
+          this.users = users.data; //<-------------------------------  Change "this.users = users.data" to "this.users = users" if CORS policy error is resolved
           if (this.users == null) {
             this.showDidntGetAnyUsers = true;
           }
@@ -101,7 +101,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.log("initializing user component");
+    //this.log("initializing user component");
     this.getUsers();
   }
 }

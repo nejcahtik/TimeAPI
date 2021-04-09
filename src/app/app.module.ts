@@ -9,6 +9,7 @@ import { PresenceComponent } from './presence/presence.component';
 import { FilterPipe } from './filter.pipe';
 import { MessagesComponent } from './messages/messages.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     PresenceComponent,
     FilterPipe,
     MessagesComponent,
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule,

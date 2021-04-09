@@ -20,7 +20,7 @@ export class TokenComponent implements OnInit {
   save() {
     this.localStorage.setItem("spica_token", this.token);
     this.showTokenSaved = true;
-    this.log("saving token");
+    //this.log("saving token");
   }
 
   private log(message: string) {

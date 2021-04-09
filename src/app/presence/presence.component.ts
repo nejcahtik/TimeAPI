@@ -37,7 +37,7 @@ export class PresenceComponent implements OnInit {
       this.userService.getPresentUsers(this.token)
         .subscribe(presentUsers => {
           console.log(presentUsers.length);
-          this.presentUsers = presentUsers.data;
+          this.presentUsers = presentUsers.data;//<------------------------------------ Change "this.presentUsers = presentUsers.data" to "this.presentUsers = presentUsers" if CORS policy error is resolved
           if (this.presentUsers == null) {
             this.showDidntGetAnyUsers = true;
           }
@@ -55,7 +55,7 @@ export class PresenceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.log("initializing presence component");
+    //this.log("initializing presence component");
     this.getPresentUsers();
   }
 }
