@@ -1,27 +1,39 @@
-# SpicaProjectTimeAPI
+# TimeAPI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.7.
+## Installation Requirements
 
-## Development server
+- Angular CLI
+- Angular
+- npm
+- node.js
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installation Process
 
-## Code scaffolding
+Download the code and go to the downloaded folder. Open the Command Prompt and type:
+`ng serve --open`
+to open the app.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+To bypass the CORS policy error, the app does not communicate directly with the TimeAPI server. It sends the data to a local server which then fetches the data from the TimeAPI server and sends it back to the app. In order to install this local server, go to the folder:
+`./server/`
+and type:
+`npm install` 
+into the command line.
+To run the server, type:
+`node index.js`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+If the CORS policy is changed on the TimeAPI server, the local server is not needed anymore as the app can communicate directly with the TimeAPI server. In this case, the code in the app should be changed a little: 
+- open `./src/app/user.service.ts` file and comment/uncomment the code as instructed in the file
+- open `./src/app/users/users.component.ts` file and change two lines of the code as instructed in the file
+- open `./src/app/presentUsers/presence.component.ts` file and change one line of the code as instructed in the file
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## User Guide
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+When the app is opened, one should go to the /Settings component in order to set the token. After the token is set, the /All Employees or /Presence component can be opened.
+- After opening /All Employees component, if the token is correct, the IDs, first names, last names and emails of all the employees should be fetched from the server and displayed in the table below. The search bar can be used to search among all employees.
+In order to add new employee, at least the first and last name of the new employee should be given, or else the app displays an error. After clicking the button "Add New Employee", new employee is created, added into the database and displayed in the table below.
 
-## Further help
+- When opening /Presence component, if the token is set correctly, the IDs, first names, last names and emails of currently present employees are fetched from the server and displayed in the table below. The button "Refresh" can be used to update the list.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
