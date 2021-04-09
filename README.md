@@ -26,7 +26,7 @@ To run the server, type:
 If the CORS policy is changed on the TimeAPI server, the local server is not needed anymore as the app can communicate directly with the TimeAPI server. In this case, the code in the app should be changed a little: 
 - open `./src/app/user.service.ts` file and comment/uncomment the code as instructed in the file
 - open `./src/app/users/users.component.ts` file and change two lines of the code as instructed in the file
-- open `./src/app/presentUsers/presentUsers.component.ts` file and change one line of the code as instructed in the file
+- open `./src/app/presentUsers/presence.component.ts` file and change one line of the code as instructed in the file
 
 
 ## User Guide
