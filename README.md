@@ -9,7 +9,7 @@
 
 ## Installation Process
 
-Download the code and go to the downloaded folder. Open the Command Prompt and type:
+Download the code and go to the downloaded folder. Open the Command Prompt and type `npm install` and then
 `ng serve --open`
 to open the app.
 
