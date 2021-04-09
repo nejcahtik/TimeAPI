@@ -10,14 +10,14 @@
 ## Installation Process
 
 Download the code and go to the downloaded folder. Open the Command Prompt and type:
-`ng open --serve`
+`ng serve --open`
 to open the app.
 
 
 To bypass the CORS policy error, the app does not communicate directly with the TimeAPI server. It sends the data to a local server which then fetches the data from the TimeAPI server and sends it back to the app. In order to install this local server, go to the folder:
 `./server/`
 and type:
-`node install` 
+`npm install` 
 into the command line.
 To run the server, type:
 `node index.js`
